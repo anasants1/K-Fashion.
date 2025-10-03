@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-Fashion - Sua Loja Online de K-Fashion</title>
+    <style>
+        /* CSS Básico para o Projeto */
+        
+        /* Variáveis de Cor */
+        :root {
+            --roxo-vibrante: #7F00FF; /* Um roxo forte e vibrante */
+            --branco: #FFFFFF;
+            --cinza-claro: #EEEEEE;
+        }
+
+        /* Estilo do Corpo */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--roxo-vibrante);
+            color: var(--branco);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho (Header) */
+        header {
+            background-color: rgba(0, 0, 0, 0.2); /* Fundo semi-transparente no roxo */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--branco);
+        }
+
+        /* Barra de Navegação e Ícones */
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .search-container {
+            display: flex;
+            background-color: var(--branco);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .search-container input {
+            padding: 8px 15px;
+            border: none;
+            outline: none;
+            color: #333;
+            width: 200px;
+        }
+
+        .search-container button {
+            background-color: var(--branco);
+            color: var(--roxo-vibrante);
+            border: none;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .icon-button {
+            background: none;
+            border: 2px solid var(--branco);
+            color: var(--branco);
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .icon-button:hover {
+            background-color: var(--branco);
+            color: var(--roxo-vibrante);
+        }
+
+        /* Layout Principal dos Produtos */
+        .container {
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid var(--branco);
+            display: inline-block;
+            padding-bottom: 10px;
+            width: 100%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cartão de Produto */
+        .product-card {
+            background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente */
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px; /* Altura fixa para uniformidade */
+            object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+            color: var(--branco);
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: var(--branco);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .price sup {
+            font-size: 0.6em;
+            vertical-align: super;
+            margin-right: 2px;
+        }
+
+        .add-to-cart {
+            background-color: var(--branco);
+            color: var(--roxo-vibrante);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--cinza-claro);
+        }
+
+        /* Rodapé (Footer) */
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: rgba(0, 0, 0, 0.3);
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">K-Fashion</div>
+        <nav>
+            <div class="search-container">
+                <input type="text" placeholder="Buscar roupas...">
+                <button type="submit">Pesquisar</button>
+            </div>
+            
+            <a href="#" class="icon-button">🛒 Carrinho (0)</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Novidades em K-Fashion</h2>
+        
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/8000FF/FFFFFF?text=LOOK+1" alt="Blusa Cropped Roxa">
+                <h3>Blusa Cropped</h3>
+                <p class="price">R$ 99<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/9370DB/FFFFFF?text=LOOK+2" alt="Saia Plissada Rosa">
+                <h3>Saia Plissada</h3>
+                <p class="price">R$ 79<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/BA55D3/FFFFFF?text=LOOK+3" alt="Moletom Oversized">
+                <h3>Moletom Oversized</h3>
+                <p class="price">R$ 139<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/DDA0DD/FFFFFF?text=LOOK+4" alt="Vestido Florido">
+                <h3>Vestido Midi</h3>
+                <p class="price">R$ 119<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/8A2BE2/FFFFFF?text=LOOK+5" alt="Calça Cargo">
+                <h3>Calça Cargo</h3>
+                <p class="price">R$ 95<sup>,50</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/4B0082/FFFFFF?text=LOOK+6" alt="Jaqueta Jeans Clássica">
+                <h3>Jaqueta Jeans</h3>
+                <p class="price">R$ 189<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/9400D3/FFFFFF?text=LOOK+7" alt="Tênis Chunky">
+                <h3>Tênis Plataforma</h3>
+                <p class="price">R$ 169<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/A020F0/FFFFFF?text=LOOK+8" alt="Gorro Estiloso">
+                <h3>Gorro de Lã</h3>
+                <p class="price">R$ 39<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/C71585/FFFFFF?text=LOOK+9" alt="Meia Calça Arrastão">
+                <h3>Meia Calça</h3>
+                <p class="price">R$ 29<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/FF00FF/FFFFFF?text=LOOK+10" alt="Camiseta Gráfica">
+                <h3>Camiseta Gráfica</h3>
+                <p class="price">R$ 65<sup>,00</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/DA70D6/FFFFFF?text=LOOK+11" alt="Bolsa Pequena">
+                <h3>Bolsa Transversal</h3>
+                <p class="price">R$ 89<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/EE82EE/FFFFFF?text=LOOK+12" alt="Óculos de Sol">
+                <h3>Óculos Vintage</h3>
+                <p class="price">R$ 49<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/C3B1E1/FFFFFF?text=LOOK+13" alt="Body de Renda">
+                <h3>Body de Renda</h3>
+                <p class="price">R$ 75<sup>,00</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/6A5ACD/FFFFFF?text=LOOK+14" alt="Short de Alfaiataria">
+                <h3>Short Alfaiataria</h3>
+                <p class="price">R$ 89<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/300x300/483D8B/FFFFFF?text=LOOK+15" alt="Cinto de Corrente">
+                <h3>Cinto de Corrente</h3>
+                <p class="price">R$ 45<sup>,90</sup></p>
+                <button class="add-to-cart">Adicionar ao Carrinho</button>
+            </div>
+
+            </div>
+    </div>
+
+    <footer>
+        &copy; 2025 K-Fashion. Todos os direitos reservados. Projeto Base em HTML.
+    </footer>
+    
+</body>
+</html>
