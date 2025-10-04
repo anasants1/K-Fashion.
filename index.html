@@ -1,314 +1,286 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K-Fashion - Sua Loja Online de K-Fashion</title>
-    <style>
-        /* CSS Básico para o Projeto */
-        
-        /* Variáveis de Cor */
-        :root {
-            --roxo-vibrante: #7F00FF; /* Um roxo forte e vibrante */
-            --branco: #FFFFFF;
-            --cinza-claro: #EEEEEE;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>K-Fashion — Loja</title>
+  <meta name="description" content="K-Fashion - Loja online única (single-file)" />
+  <style>
+    :root{
+      --purple-1: #6b21a8; /* deep purple */
+      --purple-2: #7c3aed; /* vibrant */
+      --white: #ffffff;
+      --card-bg: rgba(255,255,255,0.06);
+      --glass: rgba(255,255,255,0.06);
+      --accent: #f7f3ff;
+    }
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(135deg,var(--purple-2) 0%, var(--purple-1) 100%);
+      color:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:24px;
+      box-sizing:border-box;
+    }
+    .container{max-width:1100px;margin:0 auto}header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#fff4, #ffffff22);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--white);font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
+}
+h1{margin:0;font-size:22px}
+.controls{display:flex;align-items:center;gap:12px}
+.search{
+  display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;gap:8px;min-width:260px;
+}
+.search input{background:transparent;border:0;outline:0;color:var(--white);font-size:14px;width:220px}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.18);padding:8px 12px;border-radius:10px;color:var(--white);cursor:pointer;font-weight:600}
+.btn-primary{background:var(--white);color:var(--purple-2);border:0;padding:10px 14px;border-radius:12px}
+.cart-btn{position:relative}
+.cart-count{position:absolute;top:-8px;right:-8px;background:#ff3b30;color:#fff;border-radius:999px;padding:4px 7px;font-size:12px}
 
-        /* Estilo do Corpo */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: var(--roxo-vibrante);
-            color: var(--branco);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
+main{margin-top:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:12px;border-radius:12px;backdrop-filter: blur(6px);}
+.card img{width:100%;height:220px;object-fit:cover;border-radius:10px}
+.card h3{margin:10px 0 6px 0;font-size:16px}
+.price{font-weight:800}
+.card .actions{display:flex;gap:8px;align-items:center;margin-top:10px}
+.small{font-size:13px;opacity:0.9}
 
-        /* Cabeçalho (Header) */
-        header {
-            background-color: rgba(0, 0, 0, 0.2); /* Fundo semi-transparente no roxo */
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* modal cart */
+.modal{position:fixed;right:24px;bottom:24px;width:360px;max-height:80vh;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,0.4);display:none;flex-direction:column;overflow:auto}
+.modal.open{display:flex}
+.modal h2{margin:0 0 8px 0}
+.cart-list{display:flex;flex-direction:column;gap:10px}
+.cart-item{display:flex;gap:10px;align-items:center}
+.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:8px}
+.qty{display:flex;align-items:center;gap:6px}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
 
-        .logo {
-            font-size: 2em;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: var(--branco);
-        }
+/* responsive tweaks */
+@media(max-width:640px){
+  .search input{width:120px}
+  .modal{left:12px;right:12px;width:auto}
+}
 
-        /* Barra de Navegação e Ícones */
-        nav {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+/* subtle micro-interactions */
+.btn, .card img{transition:transform .12s ease, box-shadow .12s}
+.btn:hover{transform:translateY(-2px)}
+.card img:hover{transform:scale(1.02)}
 
-        .search-container {
-            display: flex;
-            background-color: var(--branco);
-            border-radius: 20px;
-            overflow: hidden;
-        }
+/* empty state */
+.empty{opacity:0.9;padding:20px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center}
 
-        .search-container input {
-            padding: 8px 15px;
-            border: none;
-            outline: none;
-            color: #333;
-            width: 200px;
-        }
-
-        .search-container button {
-            background-color: var(--branco);
-            color: var(--roxo-vibrante);
-            border: none;
-            padding: 8px 15px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .icon-button {
-            background: none;
-            border: 2px solid var(--branco);
-            color: var(--branco);
-            padding: 8px 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .icon-button:hover {
-            background-color: var(--branco);
-            color: var(--roxo-vibrante);
-        }
-
-        /* Layout Principal dos Produtos */
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 2.5em;
-            border-bottom: 3px solid var(--branco);
-            display: inline-block;
-            padding-bottom: 10px;
-            width: 100%;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        /* Cartão de Produto */
-        .product-card {
-            background-color: rgba(255, 255, 255, 0.1); /* Fundo levemente transparente */
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .product-card img {
-            width: 100%;
-            height: 300px; /* Altura fixa para uniformidade */
-            object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
-            border-radius: 8px;
-            margin-bottom: 10px;
-        }
-
-        .product-card h3 {
-            font-size: 1.2em;
-            margin: 10px 0;
-            color: var(--branco);
-        }
-
-        .price {
-            font-size: 1.5em;
-            color: var(--branco);
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        
-        .price sup {
-            font-size: 0.6em;
-            vertical-align: super;
-            margin-right: 2px;
-        }
-
-        .add-to-cart {
-            background-color: var(--branco);
-            color: var(--roxo-vibrante);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-
-        .add-to-cart:hover {
-            background-color: var(--cinza-claro);
-        }
-
-        /* Rodapé (Footer) */
-        footer {
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
-            background-color: rgba(0, 0, 0, 0.3);
-            font-size: 0.9em;
-        }
-    </style>
+  </style>
 </head>
 <body>
-
+  <div class="container">
     <header>
-        <div class="logo">K-Fashion</div>
-        <nav>
-            <div class="search-container">
-                <input type="text" placeholder="Buscar roupas...">
-                <button type="submit">Pesquisar</button>
-            </div>
-            
-            <a href="#" class="icon-button">🛒 Carrinho (0)</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h2>Novidades em K-Fashion</h2>
-        
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="https://instasize.com/p/097384c0196374c2ae64a6b296de60f20f257eab6d450730882e673bed46a296" alt="Blusa Cropped Roxa">
-                <h3>Blusa Cropped</h3>
-                <p class="price">R$ 99<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/9370DB/FFFFFF?text=LOOK+2" alt="Saia Plissada Rosa">
-                <h3>Saia Plissada</h3>
-                <p class="price">R$ 79<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/BA55D3/FFFFFF?text=LOOK+3" alt="Moletom Oversized">
-                <h3>Moletom Oversized</h3>
-                <p class="price">R$ 139<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/DDA0DD/FFFFFF?text=LOOK+4" alt="Vestido Florido">
-                <h3>Vestido Midi</h3>
-                <p class="price">R$ 119<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/8A2BE2/FFFFFF?text=LOOK+5" alt="Calça Cargo">
-                <h3>Calça Cargo</h3>
-                <p class="price">R$ 95<sup>,50</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/4B0082/FFFFFF?text=LOOK+6" alt="Jaqueta Jeans Clássica">
-                <h3>Jaqueta Jeans</h3>
-                <p class="price">R$ 189<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/9400D3/FFFFFF?text=LOOK+7" alt="Tênis Chunky">
-                <h3>Tênis Plataforma</h3>
-                <p class="price">R$ 169<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/A020F0/FFFFFF?text=LOOK+8" alt="Gorro Estiloso">
-                <h3>Gorro de Lã</h3>
-                <p class="price">R$ 39<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/C71585/FFFFFF?text=LOOK+9" alt="Meia Calça Arrastão">
-                <h3>Meia Calça</h3>
-                <p class="price">R$ 29<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/FF00FF/FFFFFF?text=LOOK+10" alt="Camiseta Gráfica">
-                <h3>Camiseta Gráfica</h3>
-                <p class="price">R$ 65<sup>,00</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/DA70D6/FFFFFF?text=LOOK+11" alt="Bolsa Pequena">
-                <h3>Bolsa Transversal</h3>
-                <p class="price">R$ 89<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/EE82EE/FFFFFF?text=LOOK+12" alt="Óculos de Sol">
-                <h3>Óculos Vintage</h3>
-                <p class="price">R$ 49<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/C3B1E1/FFFFFF?text=LOOK+13" alt="Body de Renda">
-                <h3>Body de Renda</h3>
-                <p class="price">R$ 75<sup>,00</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/6A5ACD/FFFFFF?text=LOOK+14" alt="Short de Alfaiataria">
-                <h3>Short Alfaiataria</h3>
-                <p class="price">R$ 89<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x300/483D8B/FFFFFF?text=LOOK+15" alt="Cinto de Corrente">
-                <h3>Cinto de Corrente</h3>
-                <p class="price">R$ 45<sup>,90</sup></p>
-                <button class="add-to-cart">Adicionar ao Carrinho</button>
-            </div>
-
-            </div>
+      <div class="brand">
+        <div class="logo">KF</div>
+        <div>
+          <h1>K-Fashion</h1>
+          <div class="small">Loja feminina • Preços até R$100</div>
+        </div>
+      </div><div class="controls">
+    <div class="search" role="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <input id="searchInput" placeholder="Buscar roupas, ex: vestido" aria-label="Buscar" />
+      <button class="btn" id="clearSearch">Limpar</button>
     </div>
+    <button class="btn cart-btn" id="cartToggle" aria-haspopup="dialog" aria-controls="cartModal">
+      Carrinho
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
 
-    <footer>
-        &copy; 2025 K-Fashion. Todos os direitos reservados. Projeto Base em HTML.
-    </footer>
-    
-</body>
+<main>
+  <section>
+    <div class="grid" id="productsGrid">
+      <!-- Product cards injected by JS -->
+    </div>
+  </section>
+</main>
+
+<!-- cart modal -->
+<aside class="modal" id="cartModal" role="dialog" aria-labelledby="cartTitle">
+  <h2 id="cartTitle">Seu Carrinho</h2>
+  <div id="cartContents" class="cart-list"></div>
+  <div id="cartEmpty" class="empty" style="display:none">Seu carrinho está vazio.</div>
+  <div class="footer">
+    <div>
+      <div class="small">Total</div>
+      <div id="cartTotal" style="font-weight:900;font-size:18px">R$0.00</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <button class="btn-primary" id="checkoutBtn">Finalizar compra</button>
+      <button class="btn" id="clearCartBtn">Limpar carrinho</button>
+    </div>
+  </div>
+</aside>
+
+  </div>  <script>
+    // Product data (15 peças femininas, preços < R$100)
+    const products = [
+      {id:1,name:'Vestido Floral Midi',price:89.90, img:'https://picsum.photos/seed/v1/400'},
+      {id:2,name:'Blusa de Seda',price:59.50, img:'https://picsum.photos/seed/v2/400'},
+      {id:3,name:'Saia Plissada',price:69.00, img:'https://picsum.photos/seed/v3/400'},
+      {id:4,name:'Macacão Casual',price:95.00, img:'https://picsum.photos/seed/v4/400'},
+      {id:5,name:'Short Jeans',price:49.90, img:'https://picsum.photos/seed/v5/400'},
+      {id:6,name:'Camisa Oversized',price:79.90, img:'https://picsum.photos/seed/v6/400'},
+      {id:7,name:'Casaco Leve',price:99.00, img:'https://picsum.photos/seed/v7/400'},
+      {id:8,name:'Top Cropped',price:39.90, img:'https://picsum.photos/seed/v8/400'},
+      {id:9,name:'Calça de Alfaiataria',price:92.50, img:'https://picsum.photos/seed/v9/400'},
+      {id:10,name:'Bolsa Tiracolo',price:68.00, img:'https://picsum.photos/seed/v10/400'},
+      {id:11,name:'Vestido Curto Festival',price:74.90, img:'https://picsum.photos/seed/v11/400'},
+      {id:12,name:'Kimono Estampado',price:85.00, img:'https://picsum.photos/seed/v12/400'},
+      {id:13,name:'Calça Jeans Skinny',price:89.00, img:'https://picsum.photos/seed/v13/400'},
+      {id:14,name:'Conjunto Moletom',price:64.90, img:'https://picsum.photos/seed/v14/400'},
+      {id:15,name:'Vestido Longo Festa',price:99.00, img:'https://picsum.photos/seed/v15/400'}
+    ];
+
+    // Utilities
+    const $ = sel => document.querySelector(sel);
+    const fmt = v => 'R$' + v.toFixed(2).replace('.',',');
+
+    // Render products
+    const grid = $('#productsGrid');
+    function renderProducts(list){
+      grid.innerHTML = '';
+      list.forEach(p =>{
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+          <h3>${p.name}</h3>
+          <div class="small">Tamanhos: P M G</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+            <div class="price">${fmt(p.price)}</div>
+            <div class="actions">
+              <button class="btn" data-id="${p.id}" onclick="addToCart(${p.id})">Adicionar</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // Search
+    const searchInput = $('#searchInput');
+    searchInput.addEventListener('input', ()=>{
+      const q = searchInput.value.trim().toLowerCase();
+      const filtered = products.filter(p => p.name.toLowerCase().includes(q));
+      renderProducts(filtered);
+    });
+    $('#clearSearch').addEventListener('click', ()=>{searchInput.value=''; renderProducts(products);});
+
+    // Cart logic (stored in localStorage)
+    const CART_KEY = 'kfashion_cart_v1';
+    function readCart(){
+      try{const raw = localStorage.getItem(CART_KEY); return raw ? JSON.parse(raw) : {}; }catch(e){return {};}
+    }
+    function writeCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
+
+    function addToCart(id){
+      const cart = readCart();
+      cart[id] = cart[id] ? cart[id]+1 : 1;
+      writeCart(cart);
+      // small animation / feedback
+      const btn = document.querySelector(`button[data-id='${id}']`);
+      btn && (btn.textContent = 'Adicionado ✓');
+      setTimeout(()=>{btn && (btn.textContent='Adicionar')},900);
+    }
+
+    // UI updates
+    function updateCartUI(){
+      const cart = readCart();
+      const ids = Object.keys(cart);
+      const count = ids.reduce((s,k)=>s+cart[k],0);
+      $('#cartCount').textContent = count;
+
+      const contents = $('#cartContents');
+      contents.innerHTML = '';
+
+      if(ids.length===0){ $('#cartEmpty').style.display='block'; $('#cartTotal').textContent = fmt(0); return; }
+      $('#cartEmpty').style.display='none';
+
+      let total = 0;
+      ids.forEach(id=>{
+        const qty = cart[id];
+        const p = products.find(x=>x.id==id);
+        if(!p) return;
+        total += p.price * qty;
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        div.innerHTML = `
+          <img src="${p.img}" alt="${p.name}" />
+          <div style="flex:1">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <strong>${p.name}</strong>
+              <div>${fmt(p.price)}</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
+              <div class="qty">
+                <button class="btn" onclick="changeQty(${id}, -1)">-</button>
+                <div style="min-width:22px;text-align:center">${qty}</div>
+                <button class="btn" onclick="changeQty(${id}, 1)">+</button>
+              </div>
+              <button class="btn" onclick="removeItem(${id})">Remover</button>
+            </div>
+          </div>
+        `;
+        contents.appendChild(div);
+      });
+      $('#cartTotal').textContent = fmt(total);
+    }
+
+    function changeQty(id, delta){
+      const cart = readCart();
+      if(!cart[id]) return;
+      cart[id] += delta;
+      if(cart[id] <= 0) delete cart[id];
+      writeCart(cart);
+    }
+    function removeItem(id){
+      const cart = readCart(); delete cart[id]; writeCart(cart);
+    }
+    function clearCart(){ localStorage.removeItem(CART_KEY); updateCartUI(); }
+
+    // Cart modal toggle
+    const cartModal = $('#cartModal');
+    $('#cartToggle').addEventListener('click', ()=>{ cartModal.classList.toggle('open'); updateCartUI(); });
+    $('#clearCartBtn').addEventListener('click', ()=>{ if(confirm('Limpar todo o carrinho?')){ clearCart(); } });
+
+    // Checkout simulated
+    $('#checkoutBtn').addEventListener('click', ()=>{
+      const cart = readCart(); if(Object.keys(cart).length===0){ alert('Seu carrinho está vazio.'); return; }
+      // Simulação de finalização
+      const total = $('#cartTotal').textContent;
+      if(confirm('Confirmar compra no valor de ' + total + '?')){
+        // fake success
+        alert('Compra finalizada! Obrigado por comprar na K-Fashion.');
+        clearCart(); cartModal.classList.remove('open');
+      }
+    });
+
+    // initial render
+    renderProducts(products);
+    updateCartUI();
+
+    // expose some functions to inline handlers
+    window.addToCart = addToCart;
+    window.changeQty = changeQty;
+    window.removeItem = removeItem;
+
+    // Accessibility: close cart when pressing Escape
+    document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ cartModal.classList.remove('open'); } });
+
+  </script></body>
 </html>
