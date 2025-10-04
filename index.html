@@ -153,22 +153,23 @@
   <script>
     // lista de produtos com tamanhos
     const productsData = [
-      { id: 1, name: "Vestido Floral", price: 90, sizes: ["P","M","G"], image: "https://i.pinimg.com/1200x/ed/f2/df/edf2df7ae1b8d5973fcd1b38f37f268a.jpg" },
-      { id: 2, name: "Blusa Casual", price: 45, sizes: ["P","M","G","GG"], image: "https://i.pinimg.com/736x/65/f9/d8/65f9d87c489068e15b245ad1b641758e.jpg" },
-      { id: 3, name: "Saia Midi", price: 65, sizes: ["P","M","G"], image: "https://i.pinimg.com/736x/72/da/0f/72da0f0f13b5c62817c3da97689515c1.jpg" },
-      { id: 4, name: "Calça Jeans", price: 80, sizes: ["M","G","GG"], image: "https://acdn-us.mitiendanube.com/stores/001/909/149/products/3620282429-69a31d1626fe832da817092938516070-640-0.webp" },
-      { id: 5, name: "Regata Básica", price: 25, sizes: ["P","M","G","GG"], image: "https://i.pinimg.com/1200x/81/a3/09/81a3091d0564c9cda166639faefd1485.jpg" },
-      { id: 6, name: "Macacão", price: 95, sizes: ["M","G"], image: "https://i.pinimg.com/1200x/ac/06/8e/ac068e10aba213e8f3b7b7dc16730175.jpg" },
-      { id: 7, name: "Kimono", price: 70, sizes: ["P","M","G","GG"], image: "https://i.pinimg.com/736x/1c/39/c9/1c39c99a929ce23746315014276c852f.jpg" },
-      { id: 8, name: "Jaqueta", price: 99, sizes: ["M","G","GG"], image: "https://i.pinimg.com/1200x/89/ab/cc/89abcc45c8cec8747174ada30f6df355.jpg" },
-      { id: 9, name: "Shorts Denim", price: 50, sizes: ["P","M","G"], image: "https://i.pinimg.com/1200x/af/2e/e1/af2ee1577373e6116f3704192276dba5.jpg" },
-      { id: 10, name: "Camisa Estampada", price: 60, sizes: ["P","M","G","GG"], image: "https://i.pinimg.com/736x/61/5e/43/615e43f1548c74762450c5a79204b603.jpg" },
-      { id: 11, name: "Blazer Feminino", price: 100, sizes: ["M","G","GG"], image: "https://i.pinimg.com/1200x/cf/91/b3/cf91b3b457e59a9d0725ff92c8ab4f2d.jpg" },
-      { id: 12, name: "Top Cropped", price: 30, sizes: ["P","M","G"], image: "https://i.pinimg.com/736x/59/1e/e5/591ee51c23d7f2f54e324bdf9d291556.jpg" 
-      { id: 13, name: "Vestido Longo", price: 90, sizes: ["P","M","G"], image: "https://i.pinimg.com/736x/ac/30/fd/ac30fd9b169dd30243e1d6814bfdff54.jpg" },
-      { id: 14, name: "Saída de Praia", price: 55, sizes: ["P","M","G","GG"], image: "https://i.pinimg.com/736x/0d/59/2b/0d592b702fea3adeddedac8c78b17c59.jpg" },
-      { id: 15, name: "Body Rendado", price: 40, sizes: ["P","M","G"], image: "https://i.pinimg.com/1200x/aa/e6/9f/aae69f6887c4ce257ce6ba3501d9138b.jpg" }
+     { id: 1, name: "Vestido Floral", price: 90, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 2, name: "Blusa Casual", price: 45, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/128986/pexels-photo-128986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 3, name: "Saia Midi", price: 65, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 4, name: "Calça Jeans", price: 80, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 5, name: "Regata Básica", price: 25, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 6, name: "Macacão", price: 95, sizes: ["M","G"], image: "https://images.pexels.com/photos/2418856/pexels-photo-2418856.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 7, name: "Kimono", price: 70, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/374822/pexels-photo-374822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 8, name: "Jaqueta", price: 99, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/428341/pexels-photo-428341.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 9, name: "Shorts Denim", price: 50, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 10, name: "Camisa Estampada", price: 60, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/428336/pexels-photo-428336.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 11, name: "Blazer Feminino", price: 100, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/631164/pexels-photo-631164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 12, name: "Top Cropped", price: 30, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/376974/pexels-photo-376974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 13, name: "Vestido Longo", price: 90, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/615704/pexels-photo-615704.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 14, name: "Saída de Praia", price: 55, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/4226227/pexels-photo-4226227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 15, name: "Body Rendado", price: 40, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/2923156/pexels-photo-2923156.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" }
     ];
+
 
     let cart = [];
 
