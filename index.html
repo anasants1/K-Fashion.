@@ -1,286 +1,250 @@
-<!doctype html>
-
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>K-Fashion — Loja</title>
-  <meta name="description" content="K-Fashion - Loja online única (single-file)" />
+  <meta charset="UTF-8">
+  <title>K‑Fashion</title>
   <style>
-    :root{
-      --purple-1: #6b21a8; /* deep purple */
-      --purple-2: #7c3aed; /* vibrant */
-      --white: #ffffff;
-      --card-bg: rgba(255,255,255,0.06);
-      --glass: rgba(255,255,255,0.06);
-      --accent: #f7f3ff;
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #6a0dad; /* roxo vibrante */
+      color: white;
     }
-    html,body{height:100%;}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background: linear-gradient(135deg,var(--purple-2) 0%, var(--purple-1) 100%);
-      color:var(--white);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:24px;
-      box-sizing:border-box;
+    header {
+      padding: 20px;
+      text-align: center;
     }
-    .container{max-width:1100px;margin:0 auto}header{
-  display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;
-}
-.brand{display:flex;align-items:center;gap:12px}
-.logo{
-  width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#fff4, #ffffff22);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--white);font-size:20px;box-shadow:0 6px 18px rgba(0,0,0,0.12);
-}
-h1{margin:0;font-size:22px}
-.controls{display:flex;align-items:center;gap:12px}
-.search{
-  display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;gap:8px;min-width:260px;
-}
-.search input{background:transparent;border:0;outline:0;color:var(--white);font-size:14px;width:220px}
-.btn{background:transparent;border:1px solid rgba(255,255,255,0.18);padding:8px 12px;border-radius:10px;color:var(--white);cursor:pointer;font-weight:600}
-.btn-primary{background:var(--white);color:var(--purple-2);border:0;padding:10px 14px;border-radius:12px}
-.cart-btn{position:relative}
-.cart-count{position:absolute;top:-8px;right:-8px;background:#ff3b30;color:#fff;border-radius:999px;padding:4px 7px;font-size:12px}
-
-main{margin-top:18px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));padding:12px;border-radius:12px;backdrop-filter: blur(6px);}
-.card img{width:100%;height:220px;object-fit:cover;border-radius:10px}
-.card h3{margin:10px 0 6px 0;font-size:16px}
-.price{font-weight:800}
-.card .actions{display:flex;gap:8px;align-items:center;margin-top:10px}
-.small{font-size:13px;opacity:0.9}
-
-/* modal cart */
-.modal{position:fixed;right:24px;bottom:24px;width:360px;max-height:80vh;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:12px;box-shadow:0 12px 40px rgba(0,0,0,0.4);display:none;flex-direction:column;overflow:auto}
-.modal.open{display:flex}
-.modal h2{margin:0 0 8px 0}
-.cart-list{display:flex;flex-direction:column;gap:10px}
-.cart-item{display:flex;gap:10px;align-items:center}
-.cart-item img{width:64px;height:64px;object-fit:cover;border-radius:8px}
-.qty{display:flex;align-items:center;gap:6px}
-.footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
-
-/* responsive tweaks */
-@media(max-width:640px){
-  .search input{width:120px}
-  .modal{left:12px;right:12px;width:auto}
-}
-
-/* subtle micro-interactions */
-.btn, .card img{transition:transform .12s ease, box-shadow .12s}
-.btn:hover{transform:translateY(-2px)}
-.card img:hover{transform:scale(1.02)}
-
-/* empty state */
-.empty{opacity:0.9;padding:20px;border-radius:10px;background:rgba(255,255,255,0.02);text-align:center}
-
+    #search-bar {
+      margin-top: 10px;
+    }
+    #search-bar input[type="text"] {
+      padding: 8px;
+      width: 200px;
+      border: none;
+      border-radius: 4px;
+    }
+    #search-bar button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4b0082; /* roxo mais escuro */
+      color: white;
+      cursor: pointer;
+    }
+    #products {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .product {
+      background-color: #7d3cbf; /* variação de roxo para destacar */
+      border-radius: 8px;
+      margin: 10px;
+      padding: 15px;
+      width: 220px;
+      box-sizing: border-box;
+      text-align: center;
+    }
+    .product img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 4px;
+    }
+    .product h3 {
+      margin: 10px 0 5px 0;
+      font-size: 18px;
+    }
+    .product p.price {
+      margin: 5px 0;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .product p.sizes {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .product button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #4b0082;
+      color: white;
+      cursor: pointer;
+    }
+    #cart {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4b0082;
+      padding: 10px 15px;
+      border-radius: 4px;
+    }
+    #cart span {
+      font-weight: bold;
+    }
+    /* estilo modal simples para mostrar carrinho */
+    #cart-modal {
+      display: none; /* oculto por padrão */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #7d3cbf;
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 320px;
+      max-height: 500px;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+    #cart-modal h2 {
+      margin-top: 0;
+    }
+    #cart-modal button.close-cart {
+      margin-top: 10px;
+      padding: 6px 10px;
+      background-color: #4b0082;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    /* sobreposição de fundo quando modal visível */
+    #modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <div class="brand">
-        <div class="logo">KF</div>
-        <div>
-          <h1>K-Fashion</h1>
-          <div class="small">Loja feminina • Preços até R$100</div>
-        </div>
-      </div><div class="controls">
-    <div class="search" role="search">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M21 21l-4.35-4.35" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <input id="searchInput" placeholder="Buscar roupas, ex: vestido" aria-label="Buscar" />
-      <button class="btn" id="clearSearch">Limpar</button>
+
+  <header>
+    <h1>K‑Fashion</h1>
+    <div id="search-bar">
+      <input type="text" id="searchInput" placeholder="Pesquisar peças...">
+      <button onclick="searchProducts()">Pesquisar</button>
     </div>
-    <button class="btn cart-btn" id="cartToggle" aria-haspopup="dialog" aria-controls="cartModal">
-      Carrinho
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
+  </header>
+
+  <div id="cart">
+    Carrinho: <span id="cart-count">0</span> item(s)
+    <button onclick="openCart()">Ver Carrinho</button>
   </div>
-</header>
 
-<main>
-  <section>
-    <div class="grid" id="productsGrid">
-      <!-- Product cards injected by JS -->
-    </div>
-  </section>
-</main>
-
-<!-- cart modal -->
-<aside class="modal" id="cartModal" role="dialog" aria-labelledby="cartTitle">
-  <h2 id="cartTitle">Seu Carrinho</h2>
-  <div id="cartContents" class="cart-list"></div>
-  <div id="cartEmpty" class="empty" style="display:none">Seu carrinho está vazio.</div>
-  <div class="footer">
-    <div>
-      <div class="small">Total</div>
-      <div id="cartTotal" style="font-weight:900;font-size:18px">R$0.00</div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px">
-      <button class="btn-primary" id="checkoutBtn">Finalizar compra</button>
-      <button class="btn" id="clearCartBtn">Limpar carrinho</button>
-    </div>
+  <div id="products">
+    <!-- os produtos vão aparecer aqui via JavaScript -->
   </div>
-</aside>
 
-  </div>  <script>
-    // Product data (15 peças femininas, preços < R$100)
-    const products = [
-      {id:1,name:'Vestido Floral Midi',price:89.90, img:'https://picsum.photos/seed/v1/400'},
-      {id:2,name:'Blusa de Seda',price:59.50, img:'https://picsum.photos/seed/v2/400'},
-      {id:3,name:'Saia Plissada',price:69.00, img:'https://picsum.photos/seed/v3/400'},
-      {id:4,name:'Macacão Casual',price:95.00, img:'https://picsum.photos/seed/v4/400'},
-      {id:5,name:'Short Jeans',price:49.90, img:'https://picsum.photos/seed/v5/400'},
-      {id:6,name:'Camisa Oversized',price:79.90, img:'https://picsum.photos/seed/v6/400'},
-      {id:7,name:'Casaco Leve',price:99.00, img:'https://picsum.photos/seed/v7/400'},
-      {id:8,name:'Top Cropped',price:39.90, img:'https://picsum.photos/seed/v8/400'},
-      {id:9,name:'Calça de Alfaiataria',price:92.50, img:'https://picsum.photos/seed/v9/400'},
-      {id:10,name:'Bolsa Tiracolo',price:68.00, img:'https://picsum.photos/seed/v10/400'},
-      {id:11,name:'Vestido Curto Festival',price:74.90, img:'https://picsum.photos/seed/v11/400'},
-      {id:12,name:'Kimono Estampado',price:85.00, img:'https://picsum.photos/seed/v12/400'},
-      {id:13,name:'Calça Jeans Skinny',price:89.00, img:'https://picsum.photos/seed/v13/400'},
-      {id:14,name:'Conjunto Moletom',price:64.90, img:'https://picsum.photos/seed/v14/400'},
-      {id:15,name:'Vestido Longo Festa',price:99.00, img:'https://picsum.photos/seed/v15/400'}
+  <!-- Modal do carrinho -->
+  <div id="modal-overlay"></div>
+  <div id="cart-modal">
+    <h2>Seu Carrinho</h2>
+    <div id="cart-items">
+      <!-- itens adicionados aparecem aqui -->
+    </div>
+    <button class="close-cart" onclick="closeCart()">Fechar</button>
+  </div>
+
+  <script>
+    // lista de produtos com tamanhos
+    const productsData = [
+      { id: 1, name: "Vestido Floral", price: 90, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 2, name: "Blusa Casual", price: 45, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/128986/pexels-photo-128986.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 3, name: "Saia Midi", price: 65, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 4, name: "Calça Jeans", price: 80, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/428338/pexels-photo-428338.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 5, name: "Regata Básica", price: 25, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/356378/pexels-photo-356378.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 6, name: "Macacão", price: 95, sizes: ["M","G"], image: "https://images.pexels.com/photos/2418856/pexels-photo-2418856.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 7, name: "Kimono", price: 70, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/374822/pexels-photo-374822.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 8, name: "Jaqueta", price: 99, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/428341/pexels-photo-428341.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 9, name: "Shorts Denim", price: 50, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 10, name: "Camisa Estampada", price: 60, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/428336/pexels-photo-428336.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 11, name: "Blazer Feminino", price: 100, sizes: ["M","G","GG"], image: "https://images.pexels.com/photos/631164/pexels-photo-631164.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 12, name: "Top Cropped", price: 30, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/376974/pexels-photo-376974.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 13, name: "Vestido Longo", price: 90, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/615704/pexels-photo-615704.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 14, name: "Saída de Praia", price: 55, sizes: ["P","M","G","GG"], image: "https://images.pexels.com/photos/4226227/pexels-photo-4226227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" },
+      { id: 15, name: "Body Rendado", price: 40, sizes: ["P","M","G"], image: "https://images.pexels.com/photos/2923156/pexels-photo-2923156.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=350" }
     ];
 
-    // Utilities
-    const $ = sel => document.querySelector(sel);
-    const fmt = v => 'R$' + v.toFixed(2).replace('.',',');
+    let cart = [];
 
-    // Render products
-    const grid = $('#productsGrid');
-    function renderProducts(list){
-      grid.innerHTML = '';
-      list.forEach(p =>{
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `
-          <img src="https://instasize.com/p/097384c0196374c2ae64a6b296de60f20f257eab6d450730882e673bed46a296" alt="${p.name}" loading="lazy"/>
-          <h3>${p.name}</h3>
-          <div class="small">Tamanhos: P M G</div>
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
-            <div class="price">${fmt(p.price)}</div>
-            <div class="actions">
-              <button class="btn" data-id="${p.id}" onclick="addToCart(${p.id})">Adicionar</button>
-            </div>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    // Search
-    const searchInput = $('#searchInput');
-    searchInput.addEventListener('input', ()=>{
-      const q = searchInput.value.trim().toLowerCase();
-      const filtered = products.filter(p => p.name.toLowerCase().includes(q));
-      renderProducts(filtered);
-    });
-    $('#clearSearch').addEventListener('click', ()=>{searchInput.value=''; renderProducts(products);});
-
-    // Cart logic (stored in localStorage)
-    const CART_KEY = 'kfashion_cart_v1';
-    function readCart(){
-      try{const raw = localStorage.getItem(CART_KEY); return raw ? JSON.parse(raw) : {}; }catch(e){return {};}
-    }
-    function writeCart(cart){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
-
-    function addToCart(id){
-      const cart = readCart();
-      cart[id] = cart[id] ? cart[id]+1 : 1;
-      writeCart(cart);
-      // small animation / feedback
-      const btn = document.querySelector(`button[data-id='${id}']`);
-      btn && (btn.textContent = 'Adicionado ✓');
-      setTimeout(()=>{btn && (btn.textContent='Adicionar')},900);
-    }
-
-    // UI updates
-    function updateCartUI(){
-      const cart = readCart();
-      const ids = Object.keys(cart);
-      const count = ids.reduce((s,k)=>s+cart[k],0);
-      $('#cartCount').textContent = count;
-
-      const contents = $('#cartContents');
-      contents.innerHTML = '';
-
-      if(ids.length===0){ $('#cartEmpty').style.display='block'; $('#cartTotal').textContent = fmt(0); return; }
-      $('#cartEmpty').style.display='none';
-
-      let total = 0;
-      ids.forEach(id=>{
-        const qty = cart[id];
-        const p = products.find(x=>x.id==id);
-        if(!p) return;
-        total += p.price * qty;
-        const div = document.createElement('div');
-        div.className = 'cart-item';
+    function renderProducts(list) {
+      const container = document.getElementById("products");
+      container.innerHTML = "";
+      list.forEach(prod => {
+        const div = document.createElement("div");
+        div.className = "product";
         div.innerHTML = `
-          <img src="${p.img}" alt="${p.name}" />
-          <div style="flex:1">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-              <strong>${p.name}</strong>
-              <div>${fmt(p.price)}</div>
-            </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px">
-              <div class="qty">
-                <button class="btn" onclick="changeQty(${id}, -1)">-</button>
-                <div style="min-width:22px;text-align:center">${qty}</div>
-                <button class="btn" onclick="changeQty(${id}, 1)">+</button>
-              </div>
-              <button class="btn" onclick="removeItem(${id})">Remover</button>
-            </div>
-          </div>
+          <img src="${prod.image}" alt="${prod.name}">
+          <h3>${prod.name}</h3>
+          <p class="price">R$ ${prod.price.toFixed(2)}</p>
+          <p class="sizes">Tamanhos: ${prod.sizes.join(", ")}</p>
+          <button onclick="addToCart(${prod.id})">Adicionar ao Carrinho</button>
         `;
-        contents.appendChild(div);
+        container.appendChild(div);
       });
-      $('#cartTotal').textContent = fmt(total);
     }
 
-    function changeQty(id, delta){
-      const cart = readCart();
-      if(!cart[id]) return;
-      cart[id] += delta;
-      if(cart[id] <= 0) delete cart[id];
-      writeCart(cart);
+    function searchProducts() {
+      const term = document.getElementById("searchInput").value.toLowerCase();
+      const filtered = productsData.filter(p => p.name.toLowerCase().includes(term));
+      renderProducts(filtered);
     }
-    function removeItem(id){
-      const cart = readCart(); delete cart[id]; writeCart(cart);
+
+    function addToCart(id) {
+      const prod = productsData.find(p => p.id === id);
+      if (!prod) return;
+      cart.push(prod);
+      updateCartCount();
+      alert(prod.name + " foi adicionado ao carrinho!");
     }
-    function clearCart(){ localStorage.removeItem(CART_KEY); updateCartUI(); }
 
-    // Cart modal toggle
-    const cartModal = $('#cartModal');
-    $('#cartToggle').addEventListener('click', ()=>{ cartModal.classList.toggle('open'); updateCartUI(); });
-    $('#clearCartBtn').addEventListener('click', ()=>{ if(confirm('Limpar todo o carrinho?')){ clearCart(); } });
+    function updateCartCount() {
+      document.getElementById("cart-count").innerText = cart.length;
+    }
 
-    // Checkout simulated
-    $('#checkoutBtn').addEventListener('click', ()=>{
-      const cart = readCart(); if(Object.keys(cart).length===0){ alert('Seu carrinho está vazio.'); return; }
-      // Simulação de finalização
-      const total = $('#cartTotal').textContent;
-      if(confirm('Confirmar compra no valor de ' + total + '?')){
-        // fake success
-        alert('Compra finalizada! Obrigado por comprar na K-Fashion.');
-        clearCart(); cartModal.classList.remove('open');
+    function openCart() {
+      const overlay = document.getElementById("modal-overlay");
+      const modal = document.getElementById("cart-modal");
+      const itemsDiv = document.getElementById("cart-items");
+      itemsDiv.innerHTML = "";
+      if (cart.length === 0) {
+        itemsDiv.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      } else {
+        cart.forEach((item, index) => {
+          const div = document.createElement("div");
+          div.style.marginBottom = "10px";
+          div.innerHTML = `
+            <strong>${item.name}</strong> — R$ ${item.price.toFixed(2)}<br>
+            <button onclick="removeFromCart(${index})">Remover</button>
+          `;
+          itemsDiv.appendChild(div);
+        });
       }
-    });
+      overlay.style.display = "block";
+      modal.style.display = "block";
+    }
 
-    // initial render
-    renderProducts(products);
-    updateCartUI();
+    function closeCart() {
+      document.getElementById("modal-overlay").style.display = "none";
+      document.getElementById("cart-modal").style.display = "none";
+    }
 
-    // expose some functions to inline handlers
-    window.addToCart = addToCart;
-    window.changeQty = changeQty;
-    window.removeItem = removeItem;
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartCount();
+      openCart(); // reabre pra mostrar atualizado
+    }
 
-    // Accessibility: close cart when pressing Escape
-    document.addEventListener('keydown', e=>{ if(e.key==='Escape'){ cartModal.classList.remove('open'); } });
+    // inicializa mostrando todos os produtos
+    window.onload = function() {
+      renderProducts(productsData);
+    };
+  </script>
 
-  </script></body>
+</body>
 </html>
